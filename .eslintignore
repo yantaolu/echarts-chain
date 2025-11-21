@@ -1,2 +1,7 @@
-/node_modules
-/examples
+node_modules/
+dist/
+es/
+lib/
+coverage/
+.nyc_output/
+examples/
