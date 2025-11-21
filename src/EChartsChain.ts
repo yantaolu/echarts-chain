@@ -247,7 +247,7 @@ export class EChartsChain extends ChainedMap {
    * @param config - 配置对象
    */
   options(config: Record<string, any>): this {
-    return this.merge(config);
+    return this.fromConfig(config);
   }
 
   /**

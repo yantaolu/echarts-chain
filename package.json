@@ -14,7 +14,7 @@
     "build:watch": "pnpm clean && tsc -w -p tsconfig.es.json & tsc -w -p tsconfig.cjs.json & rollup -w -c ./rollup.config.js",
     "clean": "rimraf dist es lib",
     "postinstall": "husky install",
-    "example": "ts-node examples/basic.ts",
+    "example": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' examples/basic.ts",
     "lint": "eslint --no-ignore src/**/*",
     "lint:fix": "eslint src/**/* --fix",
     "format": "prettier --write \"src/**/*.ts\" \"examples/**/*.ts\"",

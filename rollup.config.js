@@ -1,7 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
-import * as fs from 'node:fs';
+import typescript from '@rollup/plugin-typescript';
+import fs from 'fs';
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'));
 
@@ -18,17 +19,19 @@ const plugins = [
   resolve({
     preferBuiltins: true,
   }),
+  typescript(),
   commonjs(),
   terser(),
 ];
 
 export default [
   {
-    input: 'es/index.js',
+    input: 'src/index.ts',
     output: {
       file: './dist/index.min.js',
       format: 'umd',
       name: 'EChartsChain',
+      exports: 'named',
       banner,
       sourcemap: false,
       globals: {
