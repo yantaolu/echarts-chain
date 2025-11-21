@@ -30,7 +30,7 @@ export default [
       format: 'umd',
       name: 'EChartsChain',
       banner,
-      sourcemap: true,
+      sourcemap: false,
       globals: {
         echarts: 'echarts',
       },
