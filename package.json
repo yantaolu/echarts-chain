@@ -1,6 +1,6 @@
 {
   "name": "echarts-chain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A webpack-chain inspired API for generating ECharts configurations",
   "main": "lib/index.js",
   "module": "es/index.js",
