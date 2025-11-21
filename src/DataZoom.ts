@@ -1,4 +1,5 @@
 import { ChainedMap } from './ChainedMap';
+import type { SliderDataZoomComponentOption } from './types';
 
 /**
  * DataZoom - 区域缩放配置类
@@ -34,6 +35,11 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
       'moveOnMouseMove',
       'moveOnMouseWheel',
       'preventDefaultMouseMove',
+      // object setters covered by extend
+      'handleStyle',
+      'moveHandleStyle',
+      'textStyle',
+      'emphasis',
     ]);
   }
 
@@ -71,14 +77,16 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
   }
 
   /**
-   * 设置数据阴影样式
+   * 设置数据阴影样式 | Data shadow style
+   * @param config - 阴影样式 | Shadow style
    */
   dataBackground(config: Record<string, any>): this {
     return this.set('dataBackground', config);
   }
 
   /**
-   * 设置选中区域样式
+   * 设置选中区域样式 | Selected data shadow style
+   * @param config - 阴影样式 | Shadow style
    */
   selectedDataBackground(config: Record<string, any>): this {
     return this.set('selectedDataBackground', config);
@@ -113,16 +121,16 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
   }
 
   /**
-   * 设置手柄样式
+   * 设置手柄样式 | Handle style
+   * @param config - 样式配置 | Style config
    */
-  handleStyle(config: Record<string, any>): this {
-    return this.set('handleStyle', config);
-  }
+  handleStyle!: (config: SliderDataZoomComponentOption['handleStyle']) => this;
 
   /**
-   * 设置移动手柄样式
+   * 设置移动手柄图标 | Move handle icon
+   * @param value - 图标 | Icon
    */
-  moveHandleIcon(value: string): this {
+  moveHandleIcon(value: SliderDataZoomComponentOption['moveHandleIcon']): this {
     return this.set('moveHandleIcon', value);
   }
 
@@ -134,23 +142,20 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
   }
 
   /**
-   * 设置移动手柄样式
+   * 设置移动手柄样式 | Move handle style
+   * @param config - 样式配置 | Style config
    */
-  moveHandleStyle(config: Record<string, any>): this {
-    return this.set('moveHandleStyle', config);
-  }
+  moveHandleStyle!: (config: SliderDataZoomComponentOption['moveHandleStyle']) => this;
 
   /**
-   * 设置文本样式
+   * 设置文本样式 | Text style
+   * @param config - 文本样式 | Text style
    */
-  textStyle(config: Record<string, any>): this {
-    return this.set('textStyle', config);
-  }
+  textStyle!: (config: SliderDataZoomComponentOption['textStyle']) => this;
 
   /**
-   * 设置高亮样式
+   * 设置高亮样式 | Emphasis style
+   * @param config - 高亮样式 | Emphasis style
    */
-  emphasis(config: Record<string, any>): this {
-    return this.set('emphasis', config);
-  }
+  emphasis!: (config: SliderDataZoomComponentOption['emphasis']) => this;
 }

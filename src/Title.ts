@@ -1,4 +1,5 @@
 import { ChainedMap } from './ChainedMap';
+import type { TitleComponentOption } from './types';
 
 /**
  * Title - 标题配置类
@@ -55,16 +56,18 @@ export class Title<Parent = any> extends ChainedMap<Parent> {
   shadowOffsetY!: (value: number) => this;
 
   /**
-   * 设置文本样式
+   * 设置文本样式 | Set title text style
+   * @param config - 文本样式 | Text style
    */
-  textStyle(config: Record<string, any>): this {
+  textStyle(config: TitleComponentOption['textStyle']): this {
     return this.set('textStyle', config);
   }
 
   /**
-   * 设置副标题文本样式
+   * 设置副标题文本样式 | Set subtitle text style
+   * @param config - 文本样式 | Text style
    */
-  subtextStyle(config: Record<string, any>): this {
+  subtextStyle(config: TitleComponentOption['subtextStyle']): this {
     return this.set('subtextStyle', config);
   }
 

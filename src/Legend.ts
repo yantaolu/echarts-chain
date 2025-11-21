@@ -1,4 +1,8 @@
 import { ChainedMap } from './ChainedMap';
+import type {
+  LegendComponentOption,
+  ScrollableLegendOption as ScrollableLegendComponentOption,
+} from './types';
 
 /**
  * Legend - 图例配置类
@@ -47,6 +51,12 @@ export class Legend<Parent = any> extends ChainedMap<Parent> {
       'pageTextStyle',
       'animation',
       'animationDurationUpdate',
+      // object setters covered by extend
+      'selector',
+      'selectorItemGap',
+      'selectorPosition',
+      'selectorButtonGap',
+      'selectorLabel',
     ]);
   }
 
@@ -88,84 +98,89 @@ export class Legend<Parent = any> extends ChainedMap<Parent> {
   pageIconColor!: (value: string) => this;
   pageIconInactiveColor!: (value: string) => this;
   pageIconSize!: (value: number | number[]) => this;
-  pageTextStyle!: (value: Record<string, any>) => this;
+  /**
+   * 页签文本样式 | Legend page text style
+   * @param value - 文本样式 | Text style
+   */
+  pageTextStyle!: (value: ScrollableLegendComponentOption['pageTextStyle']) => this;
   animation!: (value: boolean) => this;
   animationDurationUpdate!: (value: number) => this;
 
   /**
-   * 设置图例数据
+   * 设置图例数据 | Set legend data
+   * @param value - 数据或数据项 | Names or DataItem objects
    */
-  data(value: any[]): this {
+  data(value: LegendComponentOption['data']): this {
     return this.set('data', value);
   }
 
   /**
-   * 设置图标
+   * 设置图例项图标 | Set legend item icon
+   * @param value - 图标类型 | Icon type
    */
-  icon(value: string): this {
-    return this.set('icon', value);
+  icon(value: LegendComponentOption['icon']): this {
+    return this.set('icon', value as string);
   }
 
   /**
-   * 设置文本样式
+   * 设置文本样式 | Set legend text style
+   * @param config - 文本样式 | Text style
    */
-  textStyle(config: Record<string, any>): this {
+  textStyle(config: LegendComponentOption['textStyle']): this {
     return this.set('textStyle', config);
   }
 
   /**
-   * 设置提示框
+   * 设置提示框 | Set legend tooltip
+   * @param config - 提示框配置 | Tooltip config
    */
-  tooltip(config: Record<string, any>): this {
+  tooltip(config: LegendComponentOption['tooltip']): this {
     return this.set('tooltip', config);
   }
 
   /**
-   * 设置页面按钮配置
+   * 设置页面按钮图标 | Set scroll legend page icons
+   * @param config - 图标配置 | Icons config
    */
-  pageIcons(config: Record<string, any>): this {
+  pageIcons(config: ScrollableLegendComponentOption['pageIcons']): this {
     return this.set('pageIcons', config);
   }
 
   /**
-   * 设置高亮状态
+   * 设置高亮状态 | Set emphasis style
+   * @param config - 高亮样式 | Emphasis style
    */
-  emphasis(config: Record<string, any>): this {
+  emphasis(config: LegendComponentOption['emphasis']): this {
     return this.set('emphasis', config);
   }
 
   /**
-   * 设置选择器
+   * 设置选择器 | Set selector
+   * @param value - 选择器配置 | Selector config
    */
-  selector(value: any): this {
-    return this.set('selector', value);
-  }
+  selector!: (value: LegendComponentOption['selector']) => this;
 
   /**
-   * 设置选择器按钮距离
+   * 设置选择器按钮距离 | Selector item gap
+   * @param value - 距离 | Gap
    */
-  selectorItemGap(value: number): this {
-    return this.set('selectorItemGap', value);
-  }
+  selectorItemGap!: (value: LegendComponentOption['selectorItemGap']) => this;
 
   /**
-   * 设置选择器位置
+   * 设置选择器位置 | Selector position
+   * @param value - 位置 | Position
    */
-  selectorPosition(value: string): this {
-    return this.set('selectorPosition', value);
-  }
+  selectorPosition!: (value: LegendComponentOption['selectorPosition']) => this;
 
   /**
-   * 设置选择器按钮样式
+   * 设置选择器按钮间距 | Selector button gap
+   * @param value - 间距 | Gap
    */
-  selectorButtonGap(value: number): this {
-    return this.set('selectorButtonGap', value);
-  }
+  selectorButtonGap!: (value: LegendComponentOption['selectorButtonGap']) => this;
 
   /**
-   * 设置选择器标签
+   * 设置选择器标签 | Selector label
+   * @param config - 标签样式 | Label style
    */
-  selectorLabel(config: Record<string, any>): this {
-    return this.set('selectorLabel', config);
-  }
+  selectorLabel!: (config: LegendComponentOption['selectorLabel']) => this;
 }

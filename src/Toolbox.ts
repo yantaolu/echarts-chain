@@ -1,4 +1,5 @@
 import { ChainedMap } from './ChainedMap';
+import type { ToolboxComponentOption } from './types';
 
 /**
  * Toolbox - 工具栏配置类
@@ -18,6 +19,11 @@ export class Toolbox<Parent = any> extends ChainedMap<Parent> {
       'bottom',
       'width',
       'height',
+      // object setters covered by extend
+      'feature',
+      'iconStyle',
+      'emphasis',
+      'tooltip',
     ]);
   }
 
@@ -35,30 +41,26 @@ export class Toolbox<Parent = any> extends ChainedMap<Parent> {
   height!: (value: string | number) => this;
 
   /**
-   * 设置工具配置
+   * 设置工具配置 | Set toolbox features
+   * @param config - 工具配置 | Feature config
    */
-  feature(config: Record<string, any>): this {
-    return this.set('feature', config);
-  }
+  feature!: (config: ToolboxComponentOption['feature']) => this;
 
   /**
-   * 设置图标样式
+   * 设置图标样式 | Set icon style
+   * @param config - 图标样式 | Icon style
    */
-  iconStyle(config: Record<string, any>): this {
-    return this.set('iconStyle', config);
-  }
+  iconStyle!: (config: ToolboxComponentOption['iconStyle']) => this;
 
   /**
-   * 设置高亮样式
+   * 设置高亮样式 | Set emphasis style
+   * @param config - 高亮样式 | Emphasis style
    */
-  emphasis(config: Record<string, any>): this {
-    return this.set('emphasis', config);
-  }
+  emphasis!: (config: ToolboxComponentOption['emphasis']) => this;
 
   /**
-   * 设置提示框
+   * 设置提示框 | Set tooltip
+   * @param config - 提示框配置 | Tooltip config
    */
-  tooltip(config: Record<string, any>): this {
-    return this.set('tooltip', config);
-  }
+  tooltip!: (config: ToolboxComponentOption['tooltip']) => this;
 }

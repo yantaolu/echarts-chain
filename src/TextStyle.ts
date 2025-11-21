@@ -1,4 +1,5 @@
 import { ChainedMap } from './ChainedMap';
+// ECharts 未导出 TextCommonOption，保持通用 Record 类型
 
 export class TextStyle<Parent = any> extends ChainedMap<Parent> {
   constructor(parent?: Parent) {
@@ -81,7 +82,10 @@ export class TextStyle<Parent = any> extends ChainedMap<Parent> {
   // 超出省略符号
   ellipsis!: (ellipsis: string) => this;
 
-  // 富文本样式配置
+  /**
+   * 富文本样式 | Rich text styles
+   * @param rich - 名称到样式映射 | Name to style mapping
+   */
   rich!: (rich: Record<string, any>) => this;
 
   // 富文本是否继承普通标签样式

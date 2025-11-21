@@ -1,4 +1,5 @@
 import { ChainedMap } from './ChainedMap';
+import type { TooltipComponentOption, AxisPointerOption } from './types';
 
 /**
  * Tooltip - 提示框配置类
@@ -52,14 +53,19 @@ export class Tooltip<Parent = any> extends ChainedMap<Parent> {
   borderColor!: (value: string) => this;
   borderWidth!: (value: number) => this;
   padding!: (value: number | number[]) => this;
-  textStyle!: (value: Record<string, any>) => this;
+  /**
+   * 文本样式 | Tooltip text style
+   * @param value - 文本样式 | Text style
+   */
+  textStyle!: (value: TooltipComponentOption['textStyle']) => this;
   extraCssText!: (value: string) => this;
   order!: (value: 'seriesAsc' | 'seriesDesc' | 'valueAsc' | 'valueDesc') => this;
 
   /**
-   * 设置坐标轴指示器
+   * 设置坐标轴指示器 | Axis pointer in tooltip
+   * @param config - 指示器配置 | AxisPointer config
    */
-  axisPointer(config: Record<string, any>): this {
+  axisPointer(config: AxisPointerOption): this {
     return this.set('axisPointer', config);
   }
 }

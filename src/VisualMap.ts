@@ -1,4 +1,6 @@
 import { ChainedMap } from './ChainedMap';
+import type { VisualMapComponentOption } from './types';
+import type { PiecewiseVisualMapOption, ContinousVisualMapOption } from './types';
 
 /**
  * VisualMap - 视觉映射配置类
@@ -80,50 +82,64 @@ export class VisualMap<Parent = any> extends ChainedMap<Parent> {
   formatter!: (value: string | ((...args: any[]) => any)) => this;
   handleIcon!: (value: string) => this;
   handleSize!: (value: number | string) => this;
-  handleStyle!: (value: Record<string, any>) => this;
+  /**
+   * 手柄样式 | Handle style
+   * @param value - 样式配置 | Style config
+   */
+  handleStyle!: (value: ContinousVisualMapOption['handleStyle']) => this;
   indicatorIcon!: (value: string) => this;
   indicatorSize!: (value: number | string) => this;
-  indicatorStyle!: (value: Record<string, any>) => this;
+  /**
+   * 指示器样式 | Indicator style
+   * @param value - 样式配置 | Style config
+   */
+  indicatorStyle!: (value: ContinousVisualMapOption['indicatorStyle']) => this;
 
   /**
-   * 设置文本样式
+   * 设置文本样式 | Set text style
+   * @param config - 文本样式 | Text style
    */
-  textStyle(config: Record<string, any>): this {
+  textStyle(config: VisualMapComponentOption['textStyle']): this {
     return this.set('textStyle', config);
   }
 
   /**
-   * 设置分段
+   * 设置分段 | Set pieces (piecewise)
+   * @param value - 分段配置 | Pieces config
    */
-  pieces(value: any[]): this {
+  pieces(value: PiecewiseVisualMapOption['pieces']): this {
     return this.set('pieces', value);
   }
 
   /**
-   * 设置类别
+   * 设置类别 | Set categories (piecewise)
+   * @param value - 类别数组 | Categories
    */
-  categories(value: any[]): this {
+  categories(value: PiecewiseVisualMapOption['categories']): this {
     return this.set('categories', value);
   }
 
   /**
-   * 设置范围内的视觉元素
+   * 设置范围内的视觉元素 | In-range visuals
+   * @param config - 视觉配置 | Visual config
    */
-  inRange(config: Record<string, any>): this {
+  inRange(config: VisualMapComponentOption['inRange']): this {
     return this.set('inRange', config);
   }
 
   /**
-   * 设置范围外的视觉元素
+   * 设置范围外的视觉元素 | Out-of-range visuals
+   * @param config - 视觉配置 | Visual config
    */
-  outOfRange(config: Record<string, any>): this {
+  outOfRange(config: VisualMapComponentOption['outOfRange']): this {
     return this.set('outOfRange', config);
   }
 
   /**
-   * 设置控制器
+   * 设置控制器 | Controller style
+   * @param config - 控制器样式 | Controller config
    */
-  controller(config: Record<string, any>): this {
+  controller(config: VisualMapComponentOption['controller']): this {
     return this.set('controller', config);
   }
 }

@@ -1,4 +1,5 @@
 import { ChainedMap } from './ChainedMap';
+import type { TooltipOption } from './types';
 
 /**
  * Grid - 网格配置类
@@ -22,6 +23,8 @@ export class Grid<Parent = any> extends ChainedMap<Parent> {
       'shadowColor',
       'shadowOffsetX',
       'shadowOffsetY',
+      // object setters covered by extend
+      'tooltip',
     ]);
   }
 
@@ -43,9 +46,8 @@ export class Grid<Parent = any> extends ChainedMap<Parent> {
   shadowOffsetY!: (value: number) => this;
 
   /**
-   * 设置提示框
+   * 设置提示框 | Set tooltip for grid
+   * @param config - 提示框配置 | Tooltip config
    */
-  tooltip(config: Record<string, any>): this {
-    return this.set('tooltip', config);
-  }
+  tooltip!: (config: TooltipOption) => this;
 }
