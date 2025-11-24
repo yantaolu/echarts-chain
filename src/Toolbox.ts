@@ -27,17 +27,60 @@ export class Toolbox<Parent = any> extends ChainedMap<Parent> {
     ]);
   }
 
-  // 实现由 extend 动态创建
+  /**
+   * 是否显示工具栏 | Show toolbox
+   * @param value - 是否显示 | Whether to display
+   */
   show!: (value: boolean) => this;
+  /**
+   * 布局方向 | Orientation
+   * @param value - 'horizontal' | 'vertical'
+   */
   orient!: (value: 'horizontal' | 'vertical') => this;
+  /**
+   * 图标大小 | Item size
+   * @param value - 像素值 | Size in pixels
+   */
   itemSize!: (value: number) => this;
+  /**
+   * 图标间距 | Item gap
+   * @param value - 像素值 | Gap in pixels
+   */
   itemGap!: (value: number) => this;
+  /**
+   * 显示标题 | Show title
+   * @param value - 是否显示 | Whether to show
+   */
   showTitle!: (value: boolean) => this;
+  /**
+   * 左侧位置 | Left position
+   * @param value - 像素或百分比 | Pixels or percentage
+   */
   left!: (value: string | number) => this;
+  /**
+   * 顶部位置 | Top position
+   * @param value - 像素或百分比 | Pixels or percentage
+   */
   top!: (value: string | number) => this;
+  /**
+   * 右侧位置 | Right position
+   * @param value - 像素或百分比 | Pixels or percentage
+   */
   right!: (value: string | number) => this;
+  /**
+   * 底部位置 | Bottom position
+   * @param value - 像素或百分比 | Pixels or percentage
+   */
   bottom!: (value: string | number) => this;
+  /**
+   * 宽度 | Toolbox width
+   * @param value - 像素或百分比 | Pixels or percentage
+   */
   width!: (value: string | number) => this;
+  /**
+   * 高度 | Toolbox height
+   * @param value - 像素或百分比 | Pixels or percentage
+   */
   height!: (value: string | number) => this;
 
   /**

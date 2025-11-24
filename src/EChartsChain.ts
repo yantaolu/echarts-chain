@@ -86,6 +86,13 @@ export class EChartsChain extends ChainedMap {
       'blendMode',
       'hoverLayerThreshold',
       'useUTC',
+      // object setters covered by extend
+      'dataset',
+      'aria',
+      'textStyle',
+      'axisPointer',
+      'graphic',
+      'brush',
     ]);
   }
 
@@ -395,52 +402,40 @@ export class EChartsChain extends ChainedMap {
   }
 
   /**
-   * 配置数据集 | Configure dataset
+   * 数据集 | Dataset
    * @param value - 数据集配置或数组 | Dataset option or array
    */
-  dataset(value: DatasetOption | DatasetOption[]): this {
-    return this.set('dataset', value);
-  }
+  dataset!: (value: DatasetOption | DatasetOption[]) => this;
 
   /**
-   * 配置 aria 辅助功能 | Configure aria
+   * Aria 辅助功能 | Aria
    * @param config - aria 配置 | Aria option
    */
-  aria(config: AriaOption): this {
-    return this.set('aria', config);
-  }
+  aria!: (config: AriaOption) => this;
 
   /**
-   * 设置全局文本样式
-   * @param config - 文本样式配置
+   * 全局文本样式 | Global text style
+   * @param config - 文本样式配置 | Text style config
    */
-  textStyle(config: Record<string, any>): this {
-    return this.set('textStyle', config);
-  }
+  textStyle!: (config: Record<string, any>) => this;
 
   /**
-   * 设置全局坐标轴指示器 | Set global axisPointer
+   * 全局坐标轴指示器 | Global axisPointer
    * @param config - AxisPointer 配置 | AxisPointer option
    */
-  axisPointer(config: AxisPointerOption): this {
-    return this.set('axisPointer', config);
-  }
+  axisPointer!: (config: AxisPointerOption) => this;
 
   /**
-   * 设置画布元素（graphic）| Set graphic elements
+   * 画布元素（graphic）| Graphic elements
    * @param value - 配置或数组 | Option or array
    */
-  graphic(value: GraphicComponentLooseOption | GraphicComponentLooseOption[]): this {
-    return this.set('graphic', value);
-  }
+  graphic!: (value: GraphicComponentLooseOption | GraphicComponentLooseOption[]) => this;
 
   /**
-   * 设置交互刷选（brush）| Set brush
+   * 交互刷选（brush）| Brush
    * @param config - 刷选配置 | Brush option
    */
-  brush(config: BrushOption): this {
-    return this.set('brush', config);
-  }
+  brush!: (config: BrushOption) => this;
 
   /**
    * 批量配置

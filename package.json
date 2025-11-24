@@ -5,6 +5,10 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yantaolu/echarts-chain.git"
+  },
   "scripts": {
     "build": "pnpm clean && pnpm build:es && pnpm build:cjs && pnpm build:umd && pnpm build:types",
     "build:es": "tsc -p tsconfig.es.json",

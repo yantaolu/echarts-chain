@@ -36,7 +36,16 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
       'moveOnMouseWheel',
       'preventDefaultMouseMove',
       // object setters covered by extend
+      'backgroundColor',
+      'dataBackground',
+      'selectedDataBackground',
+      'fillerColor',
+      'borderColor',
+      'handleIcon',
+      'handleSize',
       'handleStyle',
+      'moveHandleIcon',
+      'moveHandleSize',
       'moveHandleStyle',
       'textStyle',
       'emphasis',
@@ -70,55 +79,46 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
   preventDefaultMouseMove!: (value: boolean) => this;
 
   /**
-   * 设置背景样式
+   * 背景颜色 | Background color
+   * @param value - 颜色 | Color string
    */
-  backgroundColor(value: string): this {
-    return this.set('backgroundColor', value);
-  }
+  backgroundColor!: (value: string) => this;
 
   /**
-   * 设置数据阴影样式 | Data shadow style
+   * 数据阴影样式 | Data shadow style
    * @param config - 阴影样式 | Shadow style
    */
-  dataBackground(config: Record<string, any>): this {
-    return this.set('dataBackground', config);
-  }
+  dataBackground!: (config: Record<string, any>) => this;
 
   /**
-   * 设置选中区域样式 | Selected data shadow style
+   * 选中区域阴影样式 | Selected data shadow style
    * @param config - 阴影样式 | Shadow style
    */
-  selectedDataBackground(config: Record<string, any>): this {
-    return this.set('selectedDataBackground', config);
-  }
+  selectedDataBackground!: (config: Record<string, any>) => this;
 
   /**
-   * 设置填充颜色
+   * 填充颜色 | Filler color
+   * @param value - 颜色 | Color string
    */
-  fillerColor(value: string): this {
-    return this.set('fillerColor', value);
-  }
+  fillerColor!: (value: string) => this;
 
   /**
-   * 设置边框颜色
+   * 边框颜色 | Border color
+   * @param value - 颜色 | Color string
    */
-  borderColor(value: string): this {
-    return this.set('borderColor', value);
-  }
+  borderColor!: (value: string) => this;
 
   /**
-   * 设置手柄样式
+   * 手柄图标 | Handle icon
+   * @param value - 图标字符串 | Icon string
    */
-  handleIcon(value: string): this {
-    return this.set('handleIcon', value);
-  }
+  handleIcon!: (value: string) => this;
 
   /**
-   * 设置手柄大小
+   * 手柄大小 | Handle size
+   * @param value - 像素或字符串 | Number or string
    */
-  handleSize(value: number | string): this {
-    return this.set('handleSize', value);
-  }
+  handleSize!: (value: number | string) => this;
 
   /**
    * 设置手柄样式 | Handle style
@@ -127,19 +127,16 @@ export class DataZoom<Parent = any> extends ChainedMap<Parent> {
   handleStyle!: (config: SliderDataZoomComponentOption['handleStyle']) => this;
 
   /**
-   * 设置移动手柄图标 | Move handle icon
+   * 移动手柄图标 | Move handle icon
    * @param value - 图标 | Icon
    */
-  moveHandleIcon(value: SliderDataZoomComponentOption['moveHandleIcon']): this {
-    return this.set('moveHandleIcon', value);
-  }
+  moveHandleIcon!: (value: SliderDataZoomComponentOption['moveHandleIcon']) => this;
 
   /**
-   * 设置移动手柄大小
+   * 移动手柄大小 | Move handle size
+   * @param value - 像素值 | Size in pixels
    */
-  moveHandleSize(value: number): this {
-    return this.set('moveHandleSize', value);
-  }
+  moveHandleSize!: (value: number) => this;
 
   /**
    * 设置移动手柄样式 | Move handle style
